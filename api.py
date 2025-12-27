@@ -2,10 +2,12 @@ from flask import Flask, jsonify
 from  flask_cors import CORS
 import json
 import numpy as np
-import pandas as pd
 import pickle
 from sklearn.metrics.pairwise import cosine_similarity
 import requests
+import os
+
+port = int(os.environ.get('PORT', 5000))
 
 app = Flask(__name__)
 CORS(app)
@@ -123,7 +125,7 @@ def health():
     }), 200
 
 if __name__=='__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host='0.0.0.0', port=port, debug=False) 
 
 
 

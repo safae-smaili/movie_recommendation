@@ -113,12 +113,14 @@ def get_similar(movie_id):
 def home():
     return '''
     <h1>Movie Recommendation API</h1>
-    <p>Available endpoints:</p>
-    <ul>
-        <li><a href="/api/similar/550">/api/similar/&lt;movie_id&gt;</a> (Example: The Dark Knight)</li>
-        <li><a href="/health">/health</a> - Health check</li>
-    </ul>
+  <a href="/api/similar/550">/api/similar/movie_id/550</a> (Example: The Dark Knight)</li>
     '''
+
+@app.route('/health')
+def health():
+    return jsonify({
+        'status': 'healthy'
+    }), 200
 
 if __name__=='__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)
